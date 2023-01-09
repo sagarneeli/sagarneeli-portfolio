@@ -1,11 +1,12 @@
 export const meta = {
-  title: 'LeBron James - Web Developer and Designer',
-  description: 'Hey, I\'m LeBron. I\'m a web developer and designer building things people love.'
-}
+  title: 'Sagar Neeli - Software Developer and Freelancer',
+  description:
+    "Hey, I'm Sagar. I'm a backend developer and freelancer building things people love."
+};
 
 export const hero = {
-  title: "Hey there! I'm LeBron James.",
-  desc: "I'm a web developer and designer building things people love."
+  title: "Hey there! I'm Sagar Neeli.",
+  desc: "I'm a Software Developer and freelancer building things people love."
 };
 
 export const projects = {
@@ -15,20 +16,14 @@ export const projects = {
     {
       title: 'Lakers Official',
       description: 'Home to the Los-Angeles Lakers',
-      link: 'https://lakers.com',
-      github: ''
+      link: 'https://workation-with-tailwind-sagarneeli.vercel.app/',
+      github: 'https://github.com/sagarneeli/workation-with-tailwind'
     },
     {
-      title: 'Cool App',
+      title: 'Simple Stock Price App',
       description: 'A cool app!',
-      link: 'https://lebronscoolapp.com',
-      github: 'theking-lbj/cool-app'
-    },
-    {
-      title: 'Another app',
-      description: 'Another app!',
-      link: 'https://anotherlebronapp.com',
-      github: 'theking-lbj/another-app'
+      link: 'https://share.streamlit.io/sagarneeli/simple-stock-price-app/main/main.py',
+      github: 'https://github.com/sagarneeli/simple-stock-price-app'
     }
   ]
 };
@@ -36,22 +31,23 @@ export const projects = {
 export const stack = {
   title: 'My Stack',
   stack: [
-    'HTML',
-    'CSS',
+    'Python',
+    'Go',
+    'Java',
     'JavaScript',
     'Typescript',
     'React',
     'NextJS',
     'TailwindCSS',
-    'Firebase',
+    'AWS',
     'Git'
   ]
 };
 
 export const contact = {
   title: 'Contact Me',
-  email: 'lebron@gmail.com',
-  github: 'theking-lbj',
-  dribbble: 'theking-lbj',
-  linkedin: 'theking-lbj'
+  email: 'sagarneeli1191@gmail.com',
+  github: 'sagarneeli',
+  medium: 'sagarneeli',
+  linkedin: 'sagarneeli'
 };

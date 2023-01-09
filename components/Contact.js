@@ -33,9 +33,9 @@ export default function Stack() {
             />
           </a>
         )}
-        {contact.dribbble && (
+        {contact.medium && (
           <a
-            href={`https://dribbble.com/${contact.dribbble}`}
+            href={`https://medium.com/${contact.medium}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -43,7 +43,7 @@ export default function Stack() {
               src="/static/icons/dribbble.svg"
               width={20}
               height={20}
-              alt="Dribbble icon"
+              alt="Medium icon"
             />
           </a>
         )}
