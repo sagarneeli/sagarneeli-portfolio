@@ -38,7 +38,7 @@ export const stack = {
     'Typescript',
     'React',
     'NextJS',
-    'TailwindCSS',
+    'Event Driven Systems',
     'AWS',
     'Git'
   ]
