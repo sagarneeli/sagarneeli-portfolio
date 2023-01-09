@@ -14,7 +14,7 @@ export const projects = {
   desc: "Here are some of my favorite projects that I've worked on.",
   projects: [
     {
-      title: 'Lakers Official',
+      title: 'Workation',
       description: 'Home to the Los-Angeles Lakers',
       link: 'https://workation-with-tailwind-sagarneeli.vercel.app/',
       github: 'https://github.com/sagarneeli/workation-with-tailwind'
