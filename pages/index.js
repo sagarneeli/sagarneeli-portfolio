@@ -11,14 +11,13 @@ export default function Index() {
       <Head>
         <title>{meta.title}</title>
       </Head>
-      <div className="p-6 lg:p-20 max-w-4xl m-auto w-full">
-        <Hero />
-        <div className="p-0 space-y-10">
-          <Projects />
-          <Stack />
-          <Contact />
-        </div>
-      </div>
+      {/* The main container div has been removed to allow components to control their own max-width and padding. */}
+      {/* Components will be direct children of the fragment. */}
+      <Hero />
+      {/* The space-y-10 div has been removed. Spacing is now handled by Hero's mb-20 and the py-X classes on subsequent components. */}
+      <Projects />
+      <Stack />
+      <Contact />
     </>
   );
 }
