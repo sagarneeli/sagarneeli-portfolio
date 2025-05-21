@@ -26,6 +26,11 @@ export default function Hero() {
       </div>
       <h1 className="mt-8 mb-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">{hero.title}</h1>
       <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">{hero.desc}</p>
+      {hero.linkedinSummary && (
+        <p className="mt-4 text-md leading-relaxed text-slate-600 dark:text-slate-400 whitespace-pre-line">
+          {hero.linkedinSummary}
+        </p>
+      )}
     </div>
   );
 }
