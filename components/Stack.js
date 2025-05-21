@@ -19,7 +19,6 @@ export default function Stack() {
             </span>
           ))}
         </div>
-
         {stack.interests && stack.interests.length > 0 && (
           <>
             <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-200 mt-16 mb-8 text-center">
