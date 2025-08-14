@@ -1,0 +1,11 @@
+# Development dependencies
+-r requirements.in
+
+# Testing
+pytest
+pytest-asyncio
+httpx
+
+# Linting & Type Checking
+ruff
+mypy
