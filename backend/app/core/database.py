@@ -1,0 +1,57 @@
+"""Database configuration and session management."""
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.pool import StaticPool
+from app.core.config import settings
+from app.models import Base
+
+# Create database engine
+if settings.ENVIRONMENT == "test":
+    # Use in-memory SQLite for testing
+    engine = create_engine(
+        "sqlite:///:memory:",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+    )
+else:
+    # Use configured database URL for development/production
+    engine = create_engine(
+        settings.DATABASE_URL,
+        pool_pre_ping=True,
+        pool_recycle=300,
+    )
+
+# Create session factory
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+def create_tables():
+    """Create all database tables."""
+    Base.metadata.create_all(bind=engine)
+
+
+def get_db() -> Session:
+    """Get database session."""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+def init_db():
+    """Initialize database with sample data."""
+    from app.services.portfolio_service import PortfolioService
+
+    db = SessionLocal()
+    try:
+        # Create tables
+        create_tables()
+
+        # Initialize sample data
+        portfolio_service = PortfolioService(db)
+        portfolio_service.initialize_sample_data()
+
+    finally:
+        db.close()
