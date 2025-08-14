@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+.pnp.js
+
+# Build artifacts
+.next/
+coverage/
+dist/
+build/
+
+# Config files
+package-lock.json
+pnpm-lock.yaml
+
+# miscellaneous
+.DS_Store
