@@ -2,9 +2,9 @@
 AI-related endpoints for the portfolio.
 """
 
-from fastapi import APIRouter, status, HTTPException
+
+from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse
-from typing import Dict, Any, Optional
 from pydantic import BaseModel
 
 from app.core.config import settings
@@ -16,14 +16,14 @@ class ChatRequest(BaseModel):
     """Request model for AI chat."""
 
     message: str
-    context: Optional[str] = None
+    context: str | None = None
 
 
 class ChatResponse(BaseModel):
     """Response model for AI chat."""
 
     response: str
-    context: Optional[str] = None
+    context: str | None = None
 
 
 @router.get("/status")

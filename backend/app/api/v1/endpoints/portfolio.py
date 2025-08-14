@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from typing import Dict, Any
+
 from app.core.database import get_db
 from app.services.portfolio_service import PortfolioService
 
@@ -10,7 +10,7 @@ router = APIRouter()
 
 
 @router.get("/profile")
-async def get_profile(db: Session = Depends(get_db)) -> Dict[str, Any]:
+async def get_profile(db: Session = Depends(get_db)) -> dict[str, object]:
     """Get profile information."""
     portfolio_service = PortfolioService(db)
     profile = portfolio_service.get_profile()
@@ -35,7 +35,7 @@ async def get_profile(db: Session = Depends(get_db)) -> Dict[str, Any]:
 
 
 @router.get("/experience")
-async def get_experience(db: Session = Depends(get_db)) -> Dict[str, Any]:
+async def get_experience(db: Session = Depends(get_db)) -> dict[str, object]:
     """Get experience information."""
     portfolio_service = PortfolioService(db)
     experiences = portfolio_service.get_experiences()
@@ -73,7 +73,7 @@ async def get_experience(db: Session = Depends(get_db)) -> Dict[str, Any]:
 
 
 @router.get("/projects")
-async def get_projects(db: Session = Depends(get_db)) -> Dict[str, Any]:
+async def get_projects(db: Session = Depends(get_db)) -> dict[str, object]:
     """Get projects information."""
     portfolio_service = PortfolioService(db)
     projects = portfolio_service.get_projects(featured_only=True)
@@ -98,9 +98,10 @@ async def get_projects(db: Session = Depends(get_db)) -> Dict[str, Any]:
 
 
 @router.get("/skills")
-async def get_skills(db: Session = Depends(get_db)) -> Dict[str, Any]:
+async def get_skills(db: Session = Depends(get_db)) -> dict[str, list[str]]:
     """Get skills information."""
     portfolio_service = PortfolioService(db)
-    skills_by_category = portfolio_service.get_skills_by_category()
-
+    skills_by_category: dict[str, list[str]] = (
+        portfolio_service.get_skills_by_category()
+    )
     return skills_by_category

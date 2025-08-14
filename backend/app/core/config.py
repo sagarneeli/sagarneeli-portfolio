@@ -3,8 +3,9 @@ Application configuration settings using Pydantic Settings.
 """
 
 import json
-from typing import List
-from pydantic import Field, validator
+from typing import Any
+
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -12,56 +13,57 @@ class Settings(BaseSettings):
     """Application settings."""
 
     # Environment
-    ENVIRONMENT: str = Field(default="development", env="ENVIRONMENT")
-    DEBUG: bool = Field(default=True, env="DEBUG")
+    ENVIRONMENT: str = Field(default="development")
+    DEBUG: bool = Field(default=True)
 
     # Database
-    DATABASE_URL: str = Field(env="DATABASE_URL")
-    REDIS_URL: str = Field(default="redis://localhost:6379", env="REDIS_URL")
+    DATABASE_URL: str = Field(default="")
+    REDIS_URL: str = Field(default="redis://localhost:6379")
 
     # Security
-    SECRET_KEY: str = Field(env="SECRET_KEY")
-    ALGORITHM: str = Field(default="HS256", env="ALGORITHM")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(
-        default=30, env="ACCESS_TOKEN_EXPIRE_MINUTES"
-    )
+    SECRET_KEY: str = Field(default="")
+    ALGORITHM: str = Field(default="HS256")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(default=30)
 
     # AI/ML Services
-    OPENAI_API_KEY: str = Field(default="", env="OPENAI_API_KEY")
-    HUGGINGFACE_API_KEY: str = Field(default="", env="HUGGINGFACE_API_KEY")
-    QDRANT_URL: str = Field(default="http://localhost:6333", env="QDRANT_URL")
+    OPENAI_API_KEY: str = Field(default="")
+    HUGGINGFACE_API_KEY: str = Field(default="")
+    QDRANT_URL: str = Field(default="http://localhost:6333")
 
     # External Services
-    GITHUB_API_TOKEN: str = Field(default="", env="GITHUB_API_TOKEN")
-    LINKEDIN_API_KEY: str = Field(default="", env="LINKEDIN_API_KEY")
+    GITHUB_API_TOKEN: str = Field(default="")
+    LINKEDIN_API_KEY: str = Field(default="")
 
     # Monitoring
-    SENTRY_DSN: str = Field(default="", env="SENTRY_DSN")
-    SENTRY_ENVIRONMENT: str = Field(default="development", env="SENTRY_ENVIRONMENT")
+    SENTRY_DSN: str = Field(default="")
+    SENTRY_ENVIRONMENT: str = Field(default="development")
 
     # Feature Flags
-    ENABLE_AI_FEATURES: bool = Field(default=True, env="ENABLE_AI_FEATURES")
-    ENABLE_ANALYTICS: bool = Field(default=False, env="ENABLE_ANALYTICS")
-    ENABLE_BLOG: bool = Field(default=True, env="ENABLE_BLOG")
+    ENABLE_AI_FEATURES: bool = Field(default=True)
+    ENABLE_ANALYTICS: bool = Field(default=False)
+    ENABLE_BLOG: bool = Field(default=True)
 
     # CORS
-    ALLOWED_ORIGINS: List[str] = Field(
-        default=["http://localhost:3000"], env="ALLOWED_ORIGINS"
-    )
+    ALLOWED_ORIGINS: list[str] = Field(default=["http://localhost:3000"])
 
     # Rate Limiting
-    RATE_LIMIT_PER_MINUTE: int = Field(default=60, env="RATE_LIMIT_PER_MINUTE")
-    RATE_LIMIT_PER_HOUR: int = Field(default=1000, env="RATE_LIMIT_PER_HOUR")
+    RATE_LIMIT_PER_MINUTE: int = Field(default=60)
+    RATE_LIMIT_PER_HOUR: int = Field(default=1000)
 
-    @validator("ALLOWED_ORIGINS", pre=True)
-    def parse_allowed_origins(cls, v):
+    @field_validator("ALLOWED_ORIGINS", mode="before")
+    @classmethod
+    def parse_allowed_origins(cls, v: Any) -> list[str]:
         """Parse ALLOWED_ORIGINS from string to list."""
         if isinstance(v, str):
             try:
-                return json.loads(v)
+                parsed = json.loads(v)
+                return parsed if isinstance(parsed, list) else [v]
             except json.JSONDecodeError:
+                # Support comma-separated values as a convenience
+                if "," in v:
+                    return [item.strip() for item in v.split(",") if item.strip()]
                 return [v]
-        return v
+        return list(v)
 
     @property
     def is_production(self) -> bool:

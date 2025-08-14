@@ -1,18 +1,20 @@
 """Portfolio service for database operations."""
 
 from datetime import datetime
-from typing import List, Dict, Any, Optional
+from typing import cast
+
 from sqlalchemy.orm import Session
+
 from app.models.portfolio import (
-    Profile,
     Experience,
-    Project,
-    Skill,
-    SkillCategory,
-    ExperienceTechnology,
     ExperienceAchievement,
+    ExperienceTechnology,
+    Profile,
+    Project,
     ProjectTechnology,
     ProjectType,
+    Skill,
+    SkillCategory,
 )
 
 
@@ -22,37 +24,39 @@ class PortfolioService:
     def __init__(self, db: Session):
         self.db = db
 
-    def get_profile(self) -> Optional[Profile]:
+    def get_profile(self) -> Profile | None:
         """Get the active profile."""
-        return self.db.query(Profile).filter(Profile.is_active == True).first()
+        # Use explicit boolean filter for readability
+        return self.db.query(Profile).filter(Profile.is_active.is_(True)).first()
 
-    def get_experiences(self) -> List[Experience]:
+    def get_experiences(self) -> list[Experience]:
         """Get all experiences ordered by start date."""
         return self.db.query(Experience).order_by(Experience.start_date.desc()).all()
 
-    def get_projects(self, featured_only: bool = False) -> List[Project]:
+    def get_projects(self, featured_only: bool = False) -> list[Project]:
         """Get projects, optionally filtered by featured status."""
         query = self.db.query(Project)
         if featured_only:
-            query = query.filter(Project.is_featured == True)
+            query = query.filter(Project.is_featured.is_(True))
         return query.order_by(Project.created_at.desc()).all()
 
-    def get_skills_by_category(self) -> Dict[str, List[Skill]]:
+    def get_skills_by_category(self) -> dict[str, list[str]]:
         """Get skills grouped by category."""
         categories = (
             self.db.query(SkillCategory).order_by(SkillCategory.display_order).all()
         )
-        result = {}
+        result: dict[str, list[str]] = {}
 
         for category in categories:
             skills = self.db.query(Skill).filter(Skill.category_id == category.id).all()
-            result[category.name.lower().replace(" ", "_")] = [
-                skill.name for skill in skills
-            ]
+            names: list[str] = []
+            for s in skills:
+                names.append(cast(str, s.name))
+            result[category.name.lower().replace(" ", "_")] = names
 
         return result
 
-    def initialize_sample_data(self):
+    def initialize_sample_data(self) -> None:
         """Initialize database with sample portfolio data."""
         # Check if data already exists
         if self.db.query(Profile).first():
@@ -230,14 +234,14 @@ class PortfolioService:
             self.db.flush()  # Get the ID
 
             # Add technologies
-            for tech in exp_data["technologies"]:
+            for tech in cast(list[str], exp_data["technologies"]):
                 tech_obj = ExperienceTechnology(
                     technology=tech, experience_id=experience.id
                 )
                 self.db.add(tech_obj)
 
             # Add achievements
-            for achievement in exp_data["achievements"]:
+            for achievement in cast(list[str], exp_data["achievements"]):
                 achievement_obj = ExperienceAchievement(
                     achievement=achievement, experience_id=experience.id
                 )
@@ -311,8 +315,8 @@ class PortfolioService:
             self.db.flush()  # Get the ID
 
             # Add technologies
-            for tech in proj_data["technologies"]:
-                tech_obj = ProjectTechnology(technology=tech, project_id=project.id)
-                self.db.add(tech_obj)
+            for tech in cast(list[str], proj_data["technologies"]):
+                proj_tech = ProjectTechnology(technology=tech, project_id=project.id)
+                self.db.add(proj_tech)
 
         self.db.commit()

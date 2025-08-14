@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Award } from "lucide-react";
+import { Calendar, Award } from "lucide-react";
 
 const experiences = [
   {

@@ -2,24 +2,16 @@
 
 import asyncio
 from logging.config import fileConfig
+
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
+
 from alembic import context
 from app.core.config import settings
 from app.models import Base
 
 # Import all models to ensure they are registered
-from app.models.portfolio import (
-    Profile,
-    Experience,
-    Project,
-    Skill,
-    SkillCategory,
-    ExperienceTechnology,
-    ExperienceAchievement,
-    ProjectTechnology,
-)
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

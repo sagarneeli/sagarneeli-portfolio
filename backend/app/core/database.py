@@ -1,8 +1,11 @@
 """Database configuration and session management."""
 
+from collections.abc import Generator
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
+
 from app.core.config import settings
 from app.models import Base
 
@@ -26,12 +29,12 @@ else:
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-def create_tables():
+def create_tables() -> None:
     """Create all database tables."""
     Base.metadata.create_all(bind=engine)
 
 
-def get_db() -> Session:
+def get_db() -> Generator[Session]:
     """Get database session."""
     db = SessionLocal()
     try:
@@ -40,7 +43,7 @@ def get_db() -> Session:
         db.close()
 
 
-def init_db():
+def init_db() -> None:
     """Initialize database with sample data."""
     from app.services.portfolio_service import PortfolioService
 

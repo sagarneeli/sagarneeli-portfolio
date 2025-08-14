@@ -12,6 +12,32 @@ export function formatDate(date: string | Date) {
   }).format(new Date(date));
 }
 
+// Returns the duration between two dates as years and months
+export function calculateDuration(
+  startDate: Date,
+  endDate: Date | null
+): { years: number; months: number } {
+  const start = new Date(startDate);
+  const end = endDate ? new Date(endDate) : new Date();
+
+  let years = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth() - start.getMonth();
+
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  if (years < 0) {
+    years = 0;
+  }
+  if (months < 0) {
+    months = 0;
+  }
+
+  return { years, months };
+}
+
 export function formatDuration(startDate: string, endDate?: string) {
   const start = new Date(startDate);
   const end = endDate ? new Date(endDate) : new Date();

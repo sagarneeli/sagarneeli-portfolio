@@ -2,14 +2,13 @@
 """Database initialization script."""
 
 import sys
-import os
 from pathlib import Path
 
 # Add the parent directory to the Python path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.core.database import init_db
-from app.core.logging import setup_logging, StructuredLogger
+from app.core.logging import StructuredLogger, setup_logging
 
 
 def main():

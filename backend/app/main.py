@@ -1,28 +1,27 @@
 """Main FastAPI application."""
 
-import logging
 from contextlib import asynccontextmanager
+from typing import Any
+
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
-from app.core.config import settings
-from app.core.logging import setup_logging, StructuredLogger
+
 from app.api.v1.api import api_router
+from app.core.config import settings
 from app.core.database import init_db
-from app.models import Base
-from typing import Any
+from app.core.logging import StructuredLogger, setup_logging
 
 # Setup logging
 setup_logging()
 logger = StructuredLogger("main")
 
 # Import models to ensure they are registered with SQLAlchemy
-from app.models.portfolio import Profile, Experience, Project, Skill, SkillCategory
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI) -> Any:
     """Application lifespan manager."""
     # Startup
     logger.info("Starting up Sagar Neeli Portfolio Backend...")

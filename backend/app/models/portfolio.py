@@ -1,19 +1,19 @@
 """Portfolio database models."""
 
+import enum
+
 from sqlalchemy import (
+    Boolean,
     Column,
+    DateTime,
+    Enum,
+    ForeignKey,
+    Integer,
     String,
     Text,
-    DateTime,
-    Boolean,
-    ForeignKey,
-    Table,
-    Enum,
-    Integer,
 )
 from sqlalchemy.orm import relationship
-from sqlalchemy.dialects.postgresql import ARRAY
-import enum
+
 from .base import BaseModel
 
 
@@ -39,7 +39,7 @@ class SkillCategory(BaseModel):
     # Relationships
     skills = relationship("Skill", back_populates="category")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<SkillCategory(name='{self.name}')>"
 
 
@@ -57,7 +57,7 @@ class Skill(BaseModel):
     # Relationships
     category = relationship("SkillCategory", back_populates="skills")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Skill(name='{self.name}', category='{self.category.name}')>"
 
 
@@ -86,7 +86,7 @@ class Profile(BaseModel):
         "Project", back_populates="profile", order_by="Project.created_at.desc()"
     )
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Profile(name='{self.name}', title='{self.title}')>"
 
 
@@ -109,7 +109,7 @@ class Experience(BaseModel):
     technologies = relationship("ExperienceTechnology", back_populates="experience")
     achievements = relationship("ExperienceAchievement", back_populates="experience")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Experience(company='{self.company}', position='{self.position}')>"
 
 
@@ -124,7 +124,7 @@ class ExperienceTechnology(BaseModel):
     # Relationships
     experience = relationship("Experience", back_populates="technologies")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<ExperienceTechnology(technology='{self.technology}')>"
 
 
@@ -139,7 +139,7 @@ class ExperienceAchievement(BaseModel):
     # Relationships
     experience = relationship("Experience", back_populates="achievements")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<ExperienceAchievement(achievement='{self.achievement[:50]}...')>"
 
 
@@ -152,7 +152,7 @@ class Project(BaseModel):
     company = Column(String(200), nullable=True)
     description = Column(Text, nullable=False)
     impact = Column(Text, nullable=True)
-    project_type = Column(Enum(ProjectType), nullable=False)
+    project_type: ProjectType = Column(Enum(ProjectType), nullable=False)  # type: ignore[assignment]
     github_url = Column(String(500), nullable=True)
     live_url = Column(String(500), nullable=True)
     image_url = Column(String(500), nullable=True)
@@ -163,7 +163,7 @@ class Project(BaseModel):
     profile = relationship("Profile", back_populates="projects")
     technologies = relationship("ProjectTechnology", back_populates="project")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Project(title='{self.title}', type='{self.project_type.value}')>"
 
 
@@ -178,5 +178,5 @@ class ProjectTechnology(BaseModel):
     # Relationships
     project = relationship("Project", back_populates="technologies")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<ProjectTechnology(technology='{self.technology}')>"

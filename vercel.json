@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "installCommand": "cd frontend && npm ci",
+  "buildCommand": "cd frontend && npm run build",
+  "devCommand": "cd frontend && npm run dev",
+  "env": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  }
+}

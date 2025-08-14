@@ -4,7 +4,7 @@ Main API router for v1 endpoints.
 
 from fastapi import APIRouter
 
-from app.api.v1.endpoints import portfolio, ai, health
+from app.api.v1.endpoints import ai, health, portfolio
 
 api_router = APIRouter()
 

@@ -11,6 +11,35 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // Ignore generated and vendor files
+  {
+    ignores: [
+      "**/.next/**",
+      "**/node_modules/**",
+      "**/coverage/**",
+      "**/playwright-report/**",
+      "**/dist/**",
+    ],
+  },
+  // Project-wide rule tweaks
+  {
+    rules: {
+      "react/no-unescaped-entities": "off",
+    },
+  },
+  // Allow require()-style imports in config files
+  {
+    files: [
+      "**/*.config.js",
+      "**/*.config.cjs",
+      "**/*.config.mjs",
+      "jest.config.js",
+    ],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-var-requires": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

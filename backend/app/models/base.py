@@ -1,10 +1,11 @@
 """Base model for all database models."""
 
-from datetime import datetime
-from sqlalchemy import Column, Integer, DateTime, func
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, DateTime, Integer, func
+from sqlalchemy.orm import DeclarativeBase
 
-Base = declarative_base()
+
+class Base(DeclarativeBase):
+    """SQLAlchemy Declarative Base."""
 
 
 class BaseModel(Base):
@@ -23,6 +24,6 @@ class BaseModel(Base):
         nullable=False,
     )
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """String representation of the model."""
         return f"<{self.__class__.__name__}(id={self.id})>"
