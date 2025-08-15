@@ -62,15 +62,15 @@
   .gradient-text {
     @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
   }
-  
+
   .neural-glow {
     @apply shadow-neural hover:shadow-glow transition-shadow duration-300;
   }
-  
+
   .ai-gradient {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   }
-  
+
   .cyber-gradient {
     background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 50%, #ec4899 100%);
   }

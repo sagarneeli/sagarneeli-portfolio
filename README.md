@@ -4,7 +4,7 @@ A modern, high-performance portfolio website showcasing Sagar Neeli's expertise 
 
 ## 🚀 Features
 
-- **Modern Tech Stack**: Next.js 15 (pre-release), TypeScript, FastAPI, Python 3.11
+- **Modern Tech Stack**: Next.js 15, TypeScript, FastAPI, Python 3.11
 - **Database-Driven**: PostgreSQL with SQLAlchemy ORM and Alembic migrations
 - **AI-Inspired Design**: Custom neural network motifs and animations
 - **Responsive Design**: Mobile-first approach with smooth animations
@@ -19,7 +19,7 @@ A modern, high-performance portfolio website showcasing Sagar Neeli's expertise 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework**: Next.js 15 (pre-release) with App Router
+- **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: TailwindCSS with custom AI-inspired design tokens
 - **Animations**: Framer Motion

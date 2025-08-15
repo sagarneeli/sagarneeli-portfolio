@@ -8,65 +8,85 @@ const skillCategories = [
     title: "Backend & Cloud",
     icon: Code,
     skills: [
-      "Python", "Java", "Go", "AWS", "GCP", "Docker", "Kubernetes",
-      "Kafka", "Redis", "Memcached", "Elasticsearch"
+      "Python",
+      "Java",
+      "Go",
+      "AWS",
+      "GCP",
+      "Docker",
+      "Kubernetes",
+      "Kafka",
+      "Redis",
+      "Memcached",
+      "Elasticsearch",
     ],
-    color: "blue"
+    color: "blue",
   },
   {
     title: "AI/ML & GenAI",
     icon: Brain,
     skills: [
-      "Hugging Face", "LangChain", "OpenAI API", "RAG pipelines",
-      "Vector databases (Pinecone, Weaviate, FAISS)", "Embedding search",
-      "LLM fine-tuning", "Prompt engineering"
+      "Hugging Face",
+      "LangChain",
+      "OpenAI API",
+      "RAG pipelines",
+      "Vector databases (Pinecone, Weaviate, FAISS)",
+      "Embedding search",
+      "LLM fine-tuning",
+      "Prompt engineering",
     ],
-    color: "purple"
+    color: "purple",
   },
   {
     title: "Specialties",
     icon: Shield,
-    skills: [
-      "Ceph", "Block Storage", "Network Security"
-    ],
-    color: "emerald"
+    skills: ["Ceph", "Block Storage", "Network Security"],
+    color: "emerald",
   },
   {
     title: "Data Engineering",
     icon: Database,
-    skills: [
-      "dbt", "Snowflake", "Hive", "Spark"
-    ],
-    color: "cyan"
+    skills: ["dbt", "Snowflake", "Hive", "Spark"],
+    color: "cyan",
   },
   {
     title: "Performance & Optimization",
     icon: Zap,
     skills: [
-      "High-performance systems", "Caching strategies", "Real-time processing",
-      "System optimization", "Load balancing"
+      "High-performance systems",
+      "Caching strategies",
+      "Real-time processing",
+      "System optimization",
+      "Load balancing",
     ],
-    color: "orange"
+    color: "orange",
   },
   {
     title: "Cloud Architecture",
     icon: Cloud,
     skills: [
-      "Microservices", "Event-driven architecture", "Serverless",
-      "Infrastructure as Code", "CI/CD pipelines"
+      "Microservices",
+      "Event-driven architecture",
+      "Serverless",
+      "Infrastructure as Code",
+      "CI/CD pipelines",
     ],
-    color: "indigo"
-  }
+    color: "indigo",
+  },
 ];
 
 const getColorClasses = (color: string) => {
   const colors = {
     blue: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-700",
-    purple: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 border-purple-200 dark:border-purple-700",
-    emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 border-emerald-200 dark:border-emerald-700",
+    purple:
+      "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 border-purple-200 dark:border-purple-700",
+    emerald:
+      "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 border-emerald-200 dark:border-emerald-700",
     cyan: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300 border-cyan-200 dark:border-cyan-700",
-    orange: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300 border-orange-200 dark:border-orange-700",
-    indigo: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 border-indigo-200 dark:border-indigo-700"
+    orange:
+      "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300 border-orange-200 dark:border-orange-700",
+    indigo:
+      "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 border-indigo-200 dark:border-indigo-700",
   };
   return colors[color as keyof typeof colors] || colors.blue;
 };
@@ -86,7 +106,8 @@ export function SkillsSection() {
             Skills & Technologies
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            A comprehensive toolkit for building intelligent, scalable systems across the full technology stack.
+            A comprehensive toolkit for building intelligent, scalable systems
+            across the full technology stack.
           </p>
         </motion.div>
 
@@ -100,16 +121,20 @@ export function SkillsSection() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className={`p-6 rounded-xl border-2 ${getColorClasses(category.color)} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}>
+              <div
+                className={`p-6 rounded-xl border-2 ${getColorClasses(category.color)} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+              >
                 <div className="flex items-center mb-4">
-                  <div className={`p-3 rounded-lg ${getColorClasses(category.color)} mr-3 group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`p-3 rounded-lg ${getColorClasses(category.color)} mr-3 group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <category.icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                     {category.title}
                   </h3>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span
@@ -138,10 +163,11 @@ export function SkillsSection() {
               Continuous Learning & Innovation
             </h3>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-              I'm constantly exploring emerging technologies and methodologies. Currently focused on 
-              advanced AI/ML techniques, distributed systems optimization, and building the next generation 
-              of intelligent applications. I believe in staying ahead of the curve while maintaining 
-              deep expertise in proven technologies.
+              I'm constantly exploring emerging technologies and methodologies.
+              Currently focused on advanced AI/ML techniques, distributed
+              systems optimization, and building the next generation of
+              intelligent applications. I believe in staying ahead of the curve
+              while maintaining deep expertise in proven technologies.
             </p>
           </div>
         </motion.div>

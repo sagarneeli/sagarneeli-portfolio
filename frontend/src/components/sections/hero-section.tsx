@@ -1,7 +1,14 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown, Download, Mail, Linkedin, Github, Sparkles } from "lucide-react";
+import {
+  ArrowDown,
+  Download,
+  Mail,
+  Linkedin,
+  Github,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
@@ -17,14 +24,26 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
-      
+
       {/* Neural Network Background Pattern */}
       <div className="absolute inset-0 opacity-10 dark:opacity-5">
         <div className="absolute top-20 left-20 w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-        <div className="absolute top-40 right-32 w-3 h-3 bg-accent-500 rounded-full animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-20 right-1/3 w-3 h-3 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: "0.5s" }} />
-        <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: "1.5s" }} />
+        <div
+          className="absolute top-40 right-32 w-3 h-3 bg-accent-500 rounded-full animate-pulse"
+          style={{ animationDelay: "1s" }}
+        />
+        <div
+          className="absolute bottom-32 left-1/4 w-2 h-2 bg-cyan-500 rounded-full animate-pulse"
+          style={{ animationDelay: "2s" }}
+        />
+        <div
+          className="absolute bottom-20 right-1/3 w-3 h-3 bg-emerald-500 rounded-full animate-pulse"
+          style={{ animationDelay: "0.5s" }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+          style={{ animationDelay: "1.5s" }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -74,8 +93,9 @@ export function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="max-w-3xl mx-auto text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed"
           >
-            Building scalable, intelligent systems with ~10 years of experience in backend engineering, 
-            distributed architectures, cloud engineering, and cutting-edge AI/ML solutions.
+            Building scalable, intelligent systems with ~10 years of experience
+            in backend engineering, distributed architectures, cloud
+            engineering, and cutting-edge AI/ML solutions.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -97,7 +117,11 @@ export function HeroSection() {
               variant="outline"
               size="lg"
               className="border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-8 py-3 text-lg"
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <Mail className="w-5 h-5 mr-2" />
               Get In Touch
@@ -115,6 +139,7 @@ export function HeroSection() {
               href="https://linkedin.com/in/sagarneeli"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -125,6 +150,7 @@ export function HeroSection() {
               href="https://github.com/sagarneeli"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               className="text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}

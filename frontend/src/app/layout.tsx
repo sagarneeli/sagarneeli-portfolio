@@ -7,7 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Sagar Neeli - Senior Backend & AI Engineer",
-  description: "Building scalable, intelligent systems with ~10 years of experience in backend engineering, distributed architectures, cloud engineering, and cutting-edge AI/ML solutions.",
+  description:
+    "Building scalable, intelligent systems with ~10 years of experience in backend engineering, distributed architectures, cloud engineering, and cutting-edge AI/ML solutions.",
   metadataBase: new URL("https://sagarneeli.com"),
   authors: [{ name: "Sagar Neeli" }],
   keywords: [
@@ -20,14 +21,15 @@ export const metadata: Metadata = {
     "AWS",
     "Distributed Systems",
     "Cloud Engineering",
-    "Portfolio"
+    "Portfolio",
   ],
   creator: "Sagar Neeli",
   publisher: "Sagar Neeli",
   robots: "index, follow",
   openGraph: {
     title: "Sagar Neeli - Senior Backend & AI Engineer",
-    description: "Building scalable, intelligent systems with ~10 years of experience in backend engineering, distributed architectures, cloud engineering, and cutting-edge AI/ML solutions.",
+    description:
+      "Building scalable, intelligent systems with ~10 years of experience in backend engineering, distributed architectures, cloud engineering, and cutting-edge AI/ML solutions.",
     url: "https://sagarneeli.com",
     siteName: "Sagar Neeli Portfolio",
     locale: "en_US",
@@ -45,7 +47,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@sagarneeli",
     title: "Sagar Neeli - Senior Backend & AI Engineer",
-    description: "Building scalable, intelligent systems with ~10 years of experience in backend engineering, distributed architectures, cloud engineering, and cutting-edge AI/ML solutions.",
+    description:
+      "Building scalable, intelligent systems with ~10 years of experience in backend engineering, distributed architectures, cloud engineering, and cutting-edge AI/ML solutions.",
     images: ["/og-image.png"],
   },
   icons: {

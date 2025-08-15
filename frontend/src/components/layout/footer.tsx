@@ -27,8 +27,8 @@ export function Footer() {
               </span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Senior Backend & AI Engineer passionate about building intelligent, 
-              scalable systems that solve real-world problems.
+              Senior Backend & AI Engineer passionate about building
+              intelligent, scalable systems that solve real-world problems.
             </p>
           </motion.div>
 
@@ -44,7 +44,11 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <button
-                  onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() =>
+                    document
+                      .getElementById("about")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-slate-400 hover:text-primary-400 transition-colors text-sm"
                 >
                   About
@@ -52,7 +56,11 @@ export function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() =>
+                    document
+                      .getElementById("experience")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-slate-400 hover:text-primary-400 transition-colors text-sm"
                 >
                   Experience
@@ -60,7 +68,11 @@ export function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() =>
+                    document
+                      .getElementById("projects")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-slate-400 hover:text-primary-400 transition-colors text-sm"
                 >
                   Projects
@@ -68,7 +80,11 @@ export function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() =>
+                    document
+                      .getElementById("skills")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-slate-400 hover:text-primary-400 transition-colors text-sm"
                 >
                   Skills
@@ -76,7 +92,11 @@ export function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() =>
+                    document
+                      .getElementById("contact")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-slate-400 hover:text-primary-400 transition-colors text-sm"
                 >
                   Contact
@@ -136,7 +156,8 @@ export function Footer() {
             © {currentYear} Sagar Neeli. All rights reserved.
           </p>
           <p className="text-slate-400 text-sm flex items-center">
-            Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> using Next.js & TypeScript
+            Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> using
+            Next.js & TypeScript
           </p>
         </motion.div>
       </div>

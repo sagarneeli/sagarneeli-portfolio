@@ -5,27 +5,27 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizePackageImports: ["lucide-react", "framer-motion"],
   },
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    domains: ["avatars.githubusercontent.com"],
   },
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'X-Frame-Options',
-            value: 'DENY',
+            key: "X-Frame-Options",
+            value: "DENY",
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
           },
         ],
       },
@@ -34,8 +34,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/resume',
-        destination: '/resume.pdf',
+        source: "/resume",
+        destination: "/resume.pdf",
         permanent: true,
       },
     ];

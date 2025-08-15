@@ -61,5 +61,3 @@ export function Logo({ size = 32, className = "" }: LogoProps) {
     </motion.svg>
   );
 }
-
-

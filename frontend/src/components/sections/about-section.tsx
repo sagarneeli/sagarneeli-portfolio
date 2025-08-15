@@ -7,32 +7,38 @@ const expertise = [
   {
     icon: Brain,
     title: "AI/ML Engineering",
-    description: "Building intelligent systems with modern AI/ML technologies including LLMs, RAG pipelines, and vector databases.",
+    description:
+      "Building intelligent systems with modern AI/ML technologies including LLMs, RAG pipelines, and vector databases.",
   },
   {
     icon: Code,
     title: "Backend Development",
-    description: "Scalable microservices, APIs, and distributed systems using Python, Java, Go, and modern frameworks.",
+    description:
+      "Scalable microservices, APIs, and distributed systems using Python, Java, Go, and modern frameworks.",
   },
   {
     icon: Cloud,
     title: "Cloud Architecture",
-    description: "AWS, GCP expertise with containerization, Kubernetes orchestration, and infrastructure as code.",
+    description:
+      "AWS, GCP expertise with containerization, Kubernetes orchestration, and infrastructure as code.",
   },
   {
     icon: Database,
     title: "Data Engineering",
-    description: "Building robust data pipelines, ETL processes, and analytics platforms with modern data stack.",
+    description:
+      "Building robust data pipelines, ETL processes, and analytics platforms with modern data stack.",
   },
   {
     icon: Zap,
     title: "Performance Optimization",
-    description: "High-performance systems optimization, caching strategies, and real-time processing pipelines.",
+    description:
+      "High-performance systems optimization, caching strategies, and real-time processing pipelines.",
   },
   {
     icon: Target,
     title: "System Design",
-    description: "Architecting scalable, fault-tolerant systems with event-driven architectures and message queues.",
+    description:
+      "Architecting scalable, fault-tolerant systems with event-driven architectures and message queues.",
   },
 ];
 
@@ -51,10 +57,16 @@ export function AboutSection() {
             About Me
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            I'm a Senior Backend & AI Engineer with a passion for building intelligent, scalable systems 
-            that solve real-world problems. With nearly a decade of experience, I've evolved from a 
-            traditional backend engineer to a specialist in AI-powered solutions and distributed architectures. 
-            My brand is expressed through a minimalist <span className="font-semibold text-slate-900 dark:text-white">SN</span> monogram—clean, future-focused, and unmistakably mine.
+            I'm a Senior Backend & AI Engineer with a passion for building
+            intelligent, scalable systems that solve real-world problems. With
+            nearly a decade of experience, I've evolved from a traditional
+            backend engineer to a specialist in AI-powered solutions and
+            distributed architectures. My brand is expressed through a
+            minimalist{" "}
+            <span className="font-semibold text-slate-900 dark:text-white">
+              SN
+            </span>{" "}
+            monogram—clean, future-focused, and unmistakably mine.
           </p>
         </motion.div>
 
@@ -106,9 +118,10 @@ export function AboutSection() {
                 From Backend to AI Engineering
               </h4>
               <p className="text-slate-700 dark:text-slate-300">
-                My career began with traditional backend development, building APIs and microservices. 
-                Over time, I've increasingly focused on integrating AI/ML capabilities into production systems, 
-                from simple automation to complex generative AI applications.
+                My career began with traditional backend development, building
+                APIs and microservices. Over time, I've increasingly focused on
+                integrating AI/ML capabilities into production systems, from
+                simple automation to complex generative AI applications.
               </p>
             </motion.div>
 
@@ -123,9 +136,10 @@ export function AboutSection() {
                 Scaling AI in Production
               </h4>
               <p className="text-slate-700 dark:text-slate-300">
-                At HubSpot, I led the integration of AI translation services that achieved 95% adoption 
-                across 30+ languages. This experience taught me the challenges of deploying AI at scale 
-                and the importance of building robust, user-friendly AI systems.
+                At HubSpot, I led the integration of AI translation services
+                that achieved 95% adoption across 30+ languages. This experience
+                taught me the challenges of deploying AI at scale and the
+                importance of building robust, user-friendly AI systems.
               </p>
             </motion.div>
 
@@ -140,9 +154,10 @@ export function AboutSection() {
                 Future-Focused Innovation
               </h4>
               <p className="text-slate-700 dark:text-slate-300">
-                I'm passionate about the intersection of AI and backend engineering, particularly in 
-                building agentic systems, RAG pipelines, and intelligent automation. I believe the 
-                future lies in systems that can think, learn, and adapt autonomously.
+                I'm passionate about the intersection of AI and backend
+                engineering, particularly in building agentic systems, RAG
+                pipelines, and intelligent automation. I believe the future lies
+                in systems that can think, learn, and adapt autonomously.
               </p>
             </motion.div>
           </div>

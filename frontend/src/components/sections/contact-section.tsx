@@ -19,8 +19,9 @@ export function ContactSection() {
             Let's Connect
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            I'm always interested in discussing new opportunities, collaborations, or just chatting about 
-            technology and innovation. Feel free to reach out!
+            I'm always interested in discussing new opportunities,
+            collaborations, or just chatting about technology and innovation.
+            Feel free to reach out!
           </p>
         </motion.div>
 
@@ -38,9 +39,10 @@ export function ContactSection() {
                 Get In Touch
               </h3>
               <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
-                Whether you have a project in mind, want to discuss potential opportunities, 
-                or just want to connect, I'd love to hear from you. I'm particularly interested 
-                in roles involving AI/ML, distributed systems, and innovative backend solutions.
+                Whether you have a project in mind, want to discuss potential
+                opportunities, or just want to connect, I'd love to hear from
+                you. I'm particularly interested in roles involving AI/ML,
+                distributed systems, and innovative backend solutions.
               </p>
             </div>
 
@@ -55,8 +57,12 @@ export function ContactSection() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Email</h4>
-                  <p className="text-slate-600 dark:text-slate-300">sagarneeli1191@gmail.com</p>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    Email
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    sagarneeli1191@gmail.com
+                  </p>
                 </div>
               </motion.a>
 
@@ -72,8 +78,12 @@ export function ContactSection() {
                   <Linkedin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">LinkedIn</h4>
-                  <p className="text-slate-600 dark:text-slate-300">linkedin.com/in/sagarneeli</p>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    LinkedIn
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    linkedin.com/in/sagarneeli
+                  </p>
                 </div>
               </motion.a>
 
@@ -89,8 +99,12 @@ export function ContactSection() {
                   <Github className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">GitHub</h4>
-                  <p className="text-slate-600 dark:text-slate-300">github.com/sagarneeli</p>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    GitHub
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    github.com/sagarneeli
+                  </p>
                 </div>
               </motion.a>
             </div>
@@ -109,7 +123,8 @@ export function ContactSection() {
                 Quick Actions
               </h3>
               <p className="text-slate-600 dark:text-slate-300 mb-8">
-                Ready to take the next step? Here are some quick ways to get started.
+                Ready to take the next step? Here are some quick ways to get
+                started.
               </p>
             </div>
 
@@ -127,7 +142,9 @@ export function ContactSection() {
                 variant="outline"
                 size="lg"
                 className="w-full border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 py-4 text-lg"
-                onClick={() => window.open("mailto:sagarneeli1191@gmail.com", "_blank")}
+                onClick={() =>
+                  window.open("mailto:sagarneeli1191@gmail.com", "_blank")
+                }
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Send Email
@@ -143,8 +160,9 @@ export function ContactSection() {
                 🟢 Available for new opportunities
               </p>
               <p className="text-slate-600 dark:text-slate-300 text-sm">
-                I'm actively looking for roles in AI/ML engineering, backend development, 
-                and system architecture. Open to both full-time positions and consulting opportunities.
+                I'm actively looking for roles in AI/ML engineering, backend
+                development, and system architecture. Open to both full-time
+                positions and consulting opportunities.
               </p>
             </div>
 
@@ -154,8 +172,9 @@ export function ContactSection() {
                 Response Time
               </h4>
               <p className="text-slate-600 dark:text-slate-300 text-sm">
-                I typically respond to emails within 24 hours. For urgent matters, 
-                feel free to reach out on LinkedIn for a faster response.
+                I typically respond to emails within 24 hours. For urgent
+                matters, feel free to reach out on LinkedIn for a faster
+                response.
               </p>
             </div>
           </motion.div>

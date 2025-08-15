@@ -7,11 +7,12 @@ const projects = [
   {
     title: "Next-Gen CMS Platform",
     company: "HubSpot",
-    description: "Unified 5+ content types with scalable microservices architecture",
+    description:
+      "Unified 5+ content types with scalable microservices architecture",
     technologies: ["Python", "Microservices", "CMS", "Scalability"],
     impact: "50% onboarding time reduction",
     type: "backend",
-    icon: Database
+    icon: Database,
   },
   {
     title: "AI Translation at Scale",
@@ -20,7 +21,7 @@ const projects = [
     technologies: ["AI", "DeepL", "Automation", "Multi-language"],
     impact: "95% adoption rate",
     type: "ai",
-    icon: Brain
+    icon: Brain,
   },
   {
     title: "Event-Driven Messaging System",
@@ -29,7 +30,7 @@ const projects = [
     technologies: ["AWS SQS", "Python CDK", "Event-driven", "Synchronization"],
     impact: "90% faster vendor sync",
     type: "backend",
-    icon: Zap
+    icon: Zap,
   },
   {
     title: "GenAI-Powered Content Personalization",
@@ -38,7 +39,7 @@ const projects = [
     technologies: ["GenAI", "LLM", "CRM", "Personalization"],
     impact: "Dynamic content generation",
     type: "ai",
-    icon: Brain
+    icon: Brain,
   },
   {
     title: "Partner Onboarding Automation",
@@ -47,8 +48,8 @@ const projects = [
     technologies: ["Flask", "React", "GraphQL", "Automation"],
     impact: "70% manual work reduction",
     type: "fullstack",
-    icon: Zap
-  }
+    icon: Zap,
+  },
 ];
 
 export function ProjectsSection() {
@@ -66,7 +67,8 @@ export function ProjectsSection() {
             Featured Projects
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            A selection of impactful projects showcasing my expertise in backend engineering, AI/ML, and system architecture.
+            A selection of impactful projects showcasing my expertise in backend
+            engineering, AI/ML, and system architecture.
           </p>
         </motion.div>
 
@@ -85,13 +87,15 @@ export function ProjectsSection() {
                   <div className="p-3 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                     <project.icon className="w-6 h-6" />
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    project.type === 'ai' 
-                      ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
-                      : project.type === 'backend'
-                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
-                      : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
-                  }`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      project.type === "ai"
+                        ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300"
+                        : project.type === "backend"
+                          ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                          : "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    }`}
+                  >
                     {project.type}
                   </span>
                 </div>
