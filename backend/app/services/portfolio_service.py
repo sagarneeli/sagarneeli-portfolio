@@ -1,5 +1,6 @@
 """Portfolio service for database operations."""
 
+import re
 from datetime import datetime
 from typing import cast
 
@@ -16,7 +17,6 @@ from app.models.portfolio import (
     Skill,
     SkillCategory,
 )
-import re
 
 
 class PortfolioService:
