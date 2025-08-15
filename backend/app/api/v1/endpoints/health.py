@@ -2,7 +2,7 @@
 Health check endpoints.
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
@@ -28,7 +28,7 @@ async def detailed_health_check() -> JSONResponse:
         content={
             "status": "healthy",
             "service": "sagarneeli-portfolio-backend",
-            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "version": "1.0.0",
             "environment": settings.ENVIRONMENT,
             "checks": {
