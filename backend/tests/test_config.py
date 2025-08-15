@@ -85,7 +85,15 @@ class TestSettings:
 
     def test_production_property(self):
         """Test is_production property."""
-        with patch.dict(os.environ, {"ENVIRONMENT": "production"}, clear=True):
+        with patch.dict(
+            os.environ,
+            {
+                "ENVIRONMENT": "production",
+                "SECRET_KEY": "test",
+                "DATABASE_URL": "sqlite:///./test.db",
+            },
+            clear=True,
+        ):
             settings = Settings()
             assert settings.is_production is True
 
@@ -99,7 +107,15 @@ class TestSettings:
             settings = Settings()
             assert settings.is_development is True
 
-        with patch.dict(os.environ, {"ENVIRONMENT": "production"}, clear=True):
+        with patch.dict(
+            os.environ,
+            {
+                "ENVIRONMENT": "production",
+                "SECRET_KEY": "test",
+                "DATABASE_URL": "sqlite:///./test.db",
+            },
+            clear=True,
+        ):
             settings = Settings()
             assert settings.is_development is False
 

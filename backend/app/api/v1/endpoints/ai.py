@@ -57,8 +57,10 @@ async def ai_chat(request: ChatRequest) -> ChatResponse:
         f"backend engineering and AI/ML expertise. You asked: {request.message}."
         f"{context_note}"
     )
-
-    return ChatResponse(response=response, context="portfolio_assistant")
+    return ChatResponse(
+        response=response,
+        context="portfolio_assistant" if request.context else None,
+    )
 
 
 @router.get("/recommendations")

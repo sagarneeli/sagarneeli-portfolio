@@ -78,7 +78,7 @@ describe("Header interactions", () => {
     });
 
     render(<Header />);
-    fireEvent.click(screen.getByRole("button", { name: "About" }));
+    fireEvent.click(screen.getByRole("link", { name: "About" }));
     expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth" });
   });
 });

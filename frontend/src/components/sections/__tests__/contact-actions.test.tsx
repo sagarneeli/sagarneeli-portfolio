@@ -10,10 +10,11 @@ describe("ContactSection actions", () => {
     jest.clearAllMocks();
   });
 
-  it("opens resume in new tab on click", () => {
+  it("has resume link that opens in new tab", () => {
     render(<ContactSection />);
-    fireEvent.click(screen.getByRole("button", { name: /download resume/i }));
-    expect(openSpy).toHaveBeenCalledWith("/resume.pdf", "_blank");
+    const resumeLink = screen.getByRole("link", { name: /download resume/i });
+    expect(resumeLink).toHaveAttribute("href", "/resume.pdf");
+    expect(resumeLink).toHaveAttribute("target", "_blank");
   });
 
   it("opens mailto link on click", () => {

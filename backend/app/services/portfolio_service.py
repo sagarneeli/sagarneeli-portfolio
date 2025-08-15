@@ -16,6 +16,7 @@ from app.models.portfolio import (
     Skill,
     SkillCategory,
 )
+import re
 
 
 class PortfolioService:
@@ -52,7 +53,9 @@ class PortfolioService:
             names: list[str] = []
             for s in skills:
                 names.append(cast(str, s.name))
-            result[category.name.lower().replace(" ", "_")] = names
+            # Normalize key: lowercase, replace non-alphanumerics with underscores, collapse repeats
+            key = re.sub(r"[^a-z0-9]+", "_", category.name.lower()).strip("_")
+            result[key] = names
 
         return result
 
