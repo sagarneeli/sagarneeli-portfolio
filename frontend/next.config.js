@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   eslint: {
     // Disable Next.js eslint wrapper during production builds (Vercel)
     ignoreDuringBuilds: true,
