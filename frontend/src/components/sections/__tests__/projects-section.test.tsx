@@ -8,4 +8,3 @@ describe("ProjectsSection", () => {
     expect(screen.getByText(/Next-Gen CMS Platform/)).toBeInTheDocument();
   });
 });
-

@@ -8,4 +8,3 @@ describe("ContactSection", () => {
     expect(screen.getByText(/Get In Touch/)).toBeInTheDocument();
   });
 });
-

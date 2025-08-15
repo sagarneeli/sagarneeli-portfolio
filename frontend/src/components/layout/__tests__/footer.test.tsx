@@ -9,10 +9,8 @@ describe("Footer", () => {
     expect(screen.getByText(/Quick Links/)).toBeInTheDocument();
     expect(screen.getByText(/Connect/)).toBeInTheDocument();
 
-    ["About", "Experience", "Projects", "Skills", "Contact"].forEach(
-      (name) => {
-        expect(screen.getByText(name)).toBeInTheDocument();
-      },
-    );
+    ["About", "Experience", "Projects", "Skills", "Contact"].forEach((name) => {
+      expect(screen.getByText(name)).toBeInTheDocument();
+    });
   });
 });

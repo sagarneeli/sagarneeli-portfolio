@@ -7,4 +7,3 @@ describe("AboutSection", () => {
     expect(screen.getByText(/About Me/)).toBeInTheDocument();
   });
 });
-

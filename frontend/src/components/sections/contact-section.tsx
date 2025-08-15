@@ -131,7 +131,11 @@ export function ContactSection() {
             </div>
 
             <div className="space-y-4">
-              <Button asChild size="lg" className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 text-lg">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 text-lg"
+              >
                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="w-5 h-5 mr-2" />
                   Download Resume

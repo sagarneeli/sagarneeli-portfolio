@@ -137,9 +137,7 @@ describe("Utility Functions", () => {
     });
 
     it("formats singular year with singular month correctly", () => {
-      expect(formatDuration("2023-01-01", "2024-02-01")).toBe(
-        "1 year 1 month",
-      );
+      expect(formatDuration("2023-01-01", "2024-02-01")).toBe("1 year 1 month");
     });
   });
 

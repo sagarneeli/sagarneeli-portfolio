@@ -16,4 +16,3 @@ describe("Header resume actions", () => {
     expect(openSpy).toHaveBeenCalledWith("/resume.pdf", "_blank");
   });
 });
-

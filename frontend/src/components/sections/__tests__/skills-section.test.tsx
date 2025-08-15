@@ -8,4 +8,3 @@ describe("SkillsSection", () => {
     expect(screen.getByText(/Backend & Cloud/)).toBeInTheDocument();
   });
 });
-

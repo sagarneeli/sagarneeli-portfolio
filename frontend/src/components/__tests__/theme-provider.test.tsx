@@ -11,4 +11,3 @@ describe("ThemeProvider", () => {
     expect(screen.getByText("child")).toBeInTheDocument();
   });
 });
-

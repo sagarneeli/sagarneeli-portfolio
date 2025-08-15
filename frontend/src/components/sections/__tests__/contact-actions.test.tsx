@@ -19,7 +19,9 @@ describe("ContactSection actions", () => {
   it("opens mailto link on click", () => {
     render(<ContactSection />);
     fireEvent.click(screen.getByRole("button", { name: /send email/i }));
-    expect(openSpy).toHaveBeenCalledWith("mailto:sagarneeli1191@gmail.com", "_blank");
+    expect(openSpy).toHaveBeenCalledWith(
+      "mailto:sagarneeli1191@gmail.com",
+      "_blank",
+    );
   });
 });
-

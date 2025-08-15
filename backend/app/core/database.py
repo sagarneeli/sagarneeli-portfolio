@@ -59,7 +59,7 @@ def init_db() -> None:
     finally:
         db.close()
 
-#
+
 # Ensure tables and sample data exist during tests or when no DB is configured
 if settings.ENVIRONMENT == "test" or not settings.DATABASE_URL:
     try:

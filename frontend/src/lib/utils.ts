@@ -26,7 +26,11 @@ export function calculateDuration(
   endDate: Date | null,
 ): { years: number; months: number } {
   const start = startDate instanceof Date ? startDate : toLocalDate(startDate);
-  const end = endDate ? (endDate instanceof Date ? endDate : toLocalDate(endDate)) : new Date();
+  const end = endDate
+    ? endDate instanceof Date
+      ? endDate
+      : toLocalDate(endDate)
+    : new Date();
 
   const yearDiff = end.getUTCFullYear() - start.getUTCFullYear();
   const monthDiff = end.getUTCMonth() - start.getUTCMonth();

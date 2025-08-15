@@ -8,4 +8,3 @@ describe("ExperienceSection", () => {
     expect(screen.getByText(/HubSpot/)).toBeInTheDocument();
   });
 });
-

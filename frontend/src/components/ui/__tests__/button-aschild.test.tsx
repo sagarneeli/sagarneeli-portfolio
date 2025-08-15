@@ -17,4 +17,3 @@ describe("Button asChild", () => {
     expect(link.getAttribute("class") || "").toMatch(/inline-flex/);
   });
 });
-
