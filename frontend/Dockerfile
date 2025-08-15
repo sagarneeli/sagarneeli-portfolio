@@ -8,9 +8,10 @@ WORKDIR /app
 
 # Copy package files
 COPY package.json package-lock.json* ./
-# Install production dependencies without running lifecycle scripts (e.g., husky)
+# Install all dependencies (including dev) without running lifecycle scripts (e.g., husky),
+# so build tools like tailwind/postcss/autoprefixer are available during build.
 ENV HUSKY=0
-RUN npm ci --omit=dev --ignore-scripts
+RUN npm ci --ignore-scripts
 
 # Rebuild the source code only when needed
 FROM base AS builder
