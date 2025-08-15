@@ -85,13 +85,6 @@ jobs:
       working-directory: frontend
       run: npx playwright install --with-deps
       
-    - name: Start frontend server
-      working-directory: frontend
-      run: npm run dev &
-      
-    - name: Wait for server
-      run: sleep 30
-      
     - name: Run E2E tests
       working-directory: frontend
       run: npm run test:e2e
