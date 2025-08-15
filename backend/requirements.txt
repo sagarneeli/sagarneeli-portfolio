@@ -18,7 +18,8 @@ python-multipart==0.0.20
 
 # AI/ML
 openai==1.57.0
-langchain==0.2.16
+# Align langchain and langchain-openai on langchain-core>=0.3.17
+langchain==0.3.7
 langchain-openai==0.2.8
 huggingface-hub==0.23.4
 qdrant-client==1.10.1
