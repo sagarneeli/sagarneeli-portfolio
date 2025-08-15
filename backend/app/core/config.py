@@ -44,7 +44,8 @@ class Settings(BaseSettings):
     ENABLE_BLOG: bool = Field(default=True)
 
     # CORS
-    ALLOWED_ORIGINS: list[str] = Field(default=["http://localhost:3000"])
+    # Accept string or list from env, normalize to list[str]
+    ALLOWED_ORIGINS: list[str] | str = Field(default=["http://localhost:3000"])
 
     # Rate Limiting
     RATE_LIMIT_PER_MINUTE: int = Field(default=60)
@@ -63,7 +64,10 @@ class Settings(BaseSettings):
                 if "," in v:
                     return [item.strip() for item in v.split(",") if item.strip()]
                 return [v]
-        return list(v)
+        if isinstance(v, list):
+            return [str(item) for item in v]
+        # Fallback: wrap non-empty value, else default empty list
+        return [str(v)] if v else []
 
     @property
     def is_production(self) -> bool:

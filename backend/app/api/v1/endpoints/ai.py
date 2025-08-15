@@ -51,7 +51,12 @@ async def ai_chat(request: ChatRequest) -> ChatResponse:
         )
 
     # Mock AI response for now - would integrate with OpenAI/LangChain
-    response = f"I'm Sagar Neeli's AI assistant. I can help you learn more about my backend engineering and AI/ML expertise. You asked: {request.message}"
+    context_note = f" Context: {request.context}" if request.context else ""
+    response = (
+        "I'm Sagar Neeli's AI assistant. I can help you learn more about my "
+        f"backend engineering and AI/ML expertise. You asked: {request.message}."
+        f"{context_note}"
+    )
 
     return ChatResponse(response=response, context="portfolio_assistant")
 
@@ -59,6 +64,11 @@ async def ai_chat(request: ChatRequest) -> ChatResponse:
 @router.get("/recommendations")
 async def get_ai_recommendations() -> JSONResponse:
     """Get AI-generated project recommendations based on visitor profile."""
+    if not settings.ENABLE_AI_FEATURES:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="AI features are currently disabled",
+        )
     recommendations = [
         {
             "type": "project",
@@ -85,9 +95,18 @@ async def get_ai_recommendations() -> JSONResponse:
     )
 
 
+class SearchRequest(BaseModel):
+    query: str
+
+
 @router.post("/search")
-async def ai_search(query: str) -> JSONResponse:
+async def ai_search(request: SearchRequest) -> JSONResponse:
     """AI-powered search through portfolio content."""
+    if not settings.ENABLE_AI_FEATURES:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="AI features are currently disabled",
+        )
     # Mock search results - would integrate with vector database
     search_results = [
         {
@@ -112,5 +131,5 @@ async def ai_search(query: str) -> JSONResponse:
 
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content={"query": query, "results": search_results},
+        content={"query": request.query, "results": search_results},
     )

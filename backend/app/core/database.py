@@ -10,7 +10,7 @@ from app.core.config import settings
 from app.models import Base
 
 # Create database engine
-if settings.ENVIRONMENT == "test":
+if settings.ENVIRONMENT == "test" or not settings.DATABASE_URL:
     # Use in-memory SQLite for testing
     engine = create_engine(
         "sqlite:///:memory:",
