@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Zap, Brain, Database } from "lucide-react";
 
+type IconType = (props: { className?: string }) => JSX.Element;
+
 type ProjectItem = {
   title: string;
   company: string;
@@ -10,7 +12,7 @@ type ProjectItem = {
   technologies: string[];
   impact: string;
   type: string;
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: IconType;
 };
 
 const projectsFallback: ProjectItem[] = [
@@ -97,7 +99,7 @@ export function ProjectsSection({ projects }: { projects?: ProjectItem[] }) {
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                     {(() => {
-                      const IconComp = (project.icon || Database) as React.ComponentType<{ className?: string }>;
+                      const IconComp = (project.icon || (Database as unknown as IconType)) as IconType;
                       return <IconComp className="w-6 h-6" />;
                     })()}
                   </div>
