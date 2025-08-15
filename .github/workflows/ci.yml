@@ -25,7 +25,10 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
-        cache-dependency-path: frontend/package-lock.json
+        cache-dependency-path: |
+          frontend/package-lock.json
+          frontend/jest.config.js
+          frontend/jest.setup.js
         
     - name: Install dependencies
       working-directory: frontend
@@ -69,7 +72,10 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
-        cache-dependency-path: frontend/package-lock.json
+        cache-dependency-path: |
+          frontend/package-lock.json
+          frontend/jest.config.js
+          frontend/jest.setup.js
         
     - name: Install dependencies
       working-directory: frontend
