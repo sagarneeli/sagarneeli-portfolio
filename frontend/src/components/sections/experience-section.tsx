@@ -3,7 +3,16 @@
 import { motion } from "framer-motion";
 import { Calendar, Award } from "lucide-react";
 
-const experiences = [
+type ExperienceItem = {
+  company: string;
+  position: string;
+  description: string;
+  duration?: string;
+  technologies: string[];
+  achievements: string[];
+};
+
+const experiencesFallback: ExperienceItem[] = [
   {
     company: "Akamai Technologies",
     position: "Senior Software Engineer",
@@ -67,7 +76,12 @@ const experiences = [
   },
 ];
 
-export function ExperienceSection() {
+export function ExperienceSection({
+  experiences,
+}: {
+  experiences?: ExperienceItem[];
+}) {
+  const data = experiences && experiences.length > 0 ? experiences : experiencesFallback;
   return (
     <section id="experience" className="py-20 bg-slate-50 dark:bg-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +106,7 @@ export function ExperienceSection() {
           <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500" />
 
           <div className="space-y-12">
-            {experiences.map((experience, index) => (
+            {data.map((experience, index) => (
               <motion.div
                 key={experience.company}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -123,7 +137,7 @@ export function ExperienceSection() {
                       <div className="text-right">
                         <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
                           <Calendar className="w-4 h-4 mr-1" />
-                          {experience.duration}
+                        {experience.duration}
                         </div>
                       </div>
                     </div>

@@ -4,7 +4,18 @@ import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, MessageCircle, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function ContactSection() {
+export function ContactSection({
+  email,
+  linkedin,
+  github,
+}: {
+  email?: string;
+  linkedin?: string;
+  github?: string;
+}) {
+  const emailAddr = email || "sagarneeli1191@gmail.com";
+  const linkedinUrl = linkedin || "https://linkedin.com/in/sagarneeli";
+  const githubUrl = github || "https://github.com/sagarneeli";
   return (
     <section id="contact" className="py-20 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +59,7 @@ export function ContactSection() {
 
             <div className="space-y-6">
               <motion.a
-                href="mailto:sagarneeli1191@gmail.com"
+                href={`mailto:${emailAddr}`}
                 className="flex items-center p-4 rounded-xl bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -60,14 +71,12 @@ export function ContactSection() {
                   <h4 className="font-semibold text-slate-900 dark:text-white">
                     Email
                   </h4>
-                  <p className="text-slate-600 dark:text-slate-300">
-                    sagarneeli1191@gmail.com
-                  </p>
+                  <p className="text-slate-600 dark:text-slate-300">{emailAddr}</p>
                 </div>
               </motion.a>
 
               <motion.a
-                href="https://linkedin.com/in/sagarneeli"
+                href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Professional Network"
@@ -82,14 +91,12 @@ export function ContactSection() {
                   <h4 className="font-semibold text-slate-900 dark:text-white">
                     LinkedIn
                   </h4>
-                  <p className="text-slate-600 dark:text-slate-300">
-                    linkedin.com/in/sagarneeli
-                  </p>
+                  <p className="text-slate-600 dark:text-slate-300">linkedin.com/in/sagarneeli</p>
                 </div>
               </motion.a>
 
               <motion.a
-                href="https://github.com/sagarneeli"
+                href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Code Repository"
@@ -104,9 +111,7 @@ export function ContactSection() {
                   <h4 className="font-semibold text-slate-900 dark:text-white">
                     GitHub
                   </h4>
-                  <p className="text-slate-600 dark:text-slate-300">
-                    github.com/sagarneeli
-                  </p>
+                  <p className="text-slate-600 dark:text-slate-300">github.com/sagarneeli</p>
                 </div>
               </motion.a>
             </div>
@@ -146,9 +151,7 @@ export function ContactSection() {
                 variant="outline"
                 size="lg"
                 className="w-full border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 py-4 text-lg"
-                onClick={() =>
-                  window.open("mailto:sagarneeli1191@gmail.com", "_blank")
-                }
+                onClick={() => window.open(`mailto:${emailAddr}`, "_blank")}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Send Email

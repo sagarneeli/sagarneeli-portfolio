@@ -3,7 +3,9 @@
 import { motion } from "framer-motion";
 import { Brain, Code, Cloud, Database, Shield, Zap } from "lucide-react";
 
-const skillCategories = [
+type SkillsByCategory = Record<string, string[]>;
+
+const skillCategoriesFallback = [
   {
     title: "Backend & Cloud",
     icon: Code,
@@ -91,7 +93,31 @@ const getColorClasses = (color: string) => {
   return colors[color as keyof typeof colors] || colors.blue;
 };
 
-export function SkillsSection() {
+export function SkillsSection({
+  skillsByCategory,
+}: {
+  skillsByCategory?: SkillsByCategory;
+}) {
+  const skillCategories = skillCategoriesFallback.map((cat) => ({ ...cat }));
+
+  // If API data present, overlay lists where keys match expected slugs
+  if (skillsByCategory) {
+    const mapping: Record<string, string> = {
+      backend_cloud: "Backend & Cloud",
+      ai_ml_genai: "AI/ML & GenAI",
+      specialties: "Specialties",
+      data_engineering: "Data Engineering",
+    };
+    for (const [key, list] of Object.entries(skillsByCategory)) {
+      const title = mapping[key];
+      if (!title) continue;
+      const cat = skillCategories.find((c) => c.title === title);
+      if (cat) {
+        // Replace skills while keeping order otherwise
+        cat.skills = list;
+      }
+    }
+  }
   return (
     <section id="skills" className="py-20 bg-slate-50 dark:bg-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

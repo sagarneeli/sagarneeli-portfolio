@@ -3,7 +3,17 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Zap, Brain, Database } from "lucide-react";
 
-const projects = [
+type ProjectItem = {
+  title: string;
+  company: string;
+  description: string;
+  technologies: string[];
+  impact: string;
+  type: string;
+  icon?: React.ComponentType<{ className?: string }>;
+};
+
+const projectsFallback: ProjectItem[] = [
   {
     title: "Next-Gen CMS Platform",
     company: "HubSpot",
@@ -52,7 +62,8 @@ const projects = [
   },
 ];
 
-export function ProjectsSection() {
+export function ProjectsSection({ projects }: { projects?: ProjectItem[] }) {
+  const data = projects && projects.length > 0 ? projects : projectsFallback;
   return (
     <section id="projects" className="py-20 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,7 +84,7 @@ export function ProjectsSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {data.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
@@ -85,7 +96,10 @@ export function ProjectsSection() {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
-                    <project.icon className="w-6 h-6" />
+                    {(() => {
+                      const IconComp = (project.icon || Database) as React.ComponentType<{ className?: string }>;
+                      return <IconComp className="w-6 h-6" />;
+                    })()}
                   </div>
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${

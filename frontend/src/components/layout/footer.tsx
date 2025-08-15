@@ -3,7 +3,18 @@
 import { motion } from "framer-motion";
 import { Heart, Github, Linkedin, Mail } from "lucide-react";
 
-export function Footer() {
+export function Footer({
+  email,
+  linkedin,
+  github,
+}: {
+  email?: string;
+  linkedin?: string;
+  github?: string;
+}) {
+  const emailAddr = email || "sagarneeli1191@gmail.com";
+  const linkedinUrl = linkedin || "https://linkedin.com/in/sagarneeli";
+  const githubUrl = github || "https://github.com/sagarneeli";
   const currentYear = new Date().getFullYear();
 
   return (
@@ -116,14 +127,14 @@ export function Footer() {
             <h3 className="text-lg font-semibold text-white">Connect</h3>
             <div className="space-y-3">
               <a
-                href="mailto:sagarneeli1191@gmail.com"
+                href={`mailto:${emailAddr}`}
                 className="flex items-center text-slate-400 hover:text-primary-400 transition-colors text-sm"
               >
                 <Mail className="w-4 h-4 mr-2" />
-                sagarneeli1191@gmail.com
+                {emailAddr}
               </a>
               <a
-                href="https://linkedin.com/in/sagarneeli"
+                href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Profile URL"
@@ -133,7 +144,7 @@ export function Footer() {
                 linkedin.com/in/sagarneeli
               </a>
               <a
-                href="https://github.com/sagarneeli"
+                href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Code Repository"

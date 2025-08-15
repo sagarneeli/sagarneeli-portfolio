@@ -19,7 +19,8 @@ const animatedTexts = [
   "Distributed Systems Expert",
 ];
 
-export function HeroSection() {
+export function HeroSection({ name }: { name?: string }) {
+  const displayName = name || "Sagar Neeli";
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Elements */}
@@ -72,7 +73,7 @@ export function HeroSection() {
             className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight"
           >
             <span className="bg-gradient-to-r from-slate-900 via-primary-600 to-accent-600 dark:from-white dark:via-primary-400 dark:to-accent-400 bg-clip-text text-transparent">
-              Sagar Neeli
+              {displayName}
             </span>
           </motion.h1>
 

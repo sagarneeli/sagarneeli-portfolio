@@ -42,7 +42,7 @@ const expertise = [
   },
 ];
 
-export function AboutSection() {
+export function AboutSection({ summary }: { summary?: string }) {
   return (
     <section id="about" className="py-20 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,16 +57,17 @@ export function AboutSection() {
             About Me
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            I'm a Senior Backend & AI Engineer with a passion for building
-            intelligent, scalable systems that solve real-world problems. With
-            nearly a decade of experience, I've evolved from a traditional
-            backend engineer to a specialist in AI-powered solutions and
-            distributed architectures. My brand is expressed through a
-            minimalist{" "}
-            <span className="font-semibold text-slate-900 dark:text-white">
-              SN
-            </span>{" "}
-            monogram—clean, future-focused, and unmistakably mine.
+            {summary || (
+              <>
+                I'm a Senior Backend & AI Engineer with a passion for building
+                intelligent, scalable systems that solve real-world problems. With
+                nearly a decade of experience, I've evolved from a traditional
+                backend engineer to a specialist in AI-powered solutions and
+                distributed architectures. My brand is expressed through a
+                minimalist <span className="font-semibold text-slate-900 dark:text-white">SN</span>{" "}
+                monogram—clean, future-focused, and unmistakably mine.
+              </>
+            )}
           </p>
         </motion.div>
 
