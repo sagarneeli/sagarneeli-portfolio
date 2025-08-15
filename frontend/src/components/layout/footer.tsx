@@ -126,6 +126,7 @@ export function Footer() {
                 href="https://linkedin.com/in/sagarneeli"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Profile URL"
                 className="flex items-center text-slate-400 hover:text-primary-400 transition-colors text-sm"
               >
                 <Linkedin className="w-4 h-4 mr-2" />
@@ -135,6 +136,7 @@ export function Footer() {
                 href="https://github.com/sagarneeli"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Code Repository"
                 className="flex items-center text-slate-400 hover:text-primary-400 transition-colors text-sm"
               >
                 <Github className="w-4 h-4 mr-2" />

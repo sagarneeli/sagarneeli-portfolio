@@ -64,15 +64,19 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <motion.button
+              <motion.a
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
                 className="text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {item.name}
-              </motion.button>
+              </motion.a>
             ))}
           </nav>
 

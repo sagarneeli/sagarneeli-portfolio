@@ -70,6 +70,7 @@ export function ContactSection() {
                 href="https://linkedin.com/in/sagarneeli"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Professional Network"
                 className="flex items-center p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -91,6 +92,7 @@ export function ContactSection() {
                 href="https://github.com/sagarneeli"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Code Repository"
                 className="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -129,13 +131,11 @@ export function ContactSection() {
             </div>
 
             <div className="space-y-4">
-              <Button
-                size="lg"
-                className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 text-lg"
-                onClick={() => window.open("/resume.pdf", "_blank")}
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download Resume
+              <Button asChild size="lg" className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 text-lg">
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Resume
+                </a>
               </Button>
 
               <Button
