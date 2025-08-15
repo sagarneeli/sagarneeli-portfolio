@@ -5,12 +5,19 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+function toLocalDate(date: string | Date): Date {
+  if (date instanceof Date) return date;
+  const [y, m, d] = date.split("-").map(Number);
+  if (!y || !m || !d) return new Date(date);
+  return new Date(y, m - 1, d);
+}
+
 export function formatDate(date: string | Date) {
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
     year: "numeric",
     timeZone: "UTC",
-  }).format(new Date(date));
+  }).format(toLocalDate(date));
 }
 
 // Returns the duration between two dates as years and months
@@ -18,12 +25,12 @@ export function calculateDuration(
   startDate: Date,
   endDate: Date | null,
 ): { years: number; months: number } {
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date();
+  const start = startDate instanceof Date ? startDate : toLocalDate(startDate);
+  const end = endDate ? (endDate instanceof Date ? endDate : toLocalDate(endDate)) : new Date();
 
-  const yearDiff = end.getFullYear() - start.getFullYear();
-  const monthDiff = end.getMonth() - start.getMonth();
-  const dayDiff = end.getDate() - start.getDate();
+  const yearDiff = end.getUTCFullYear() - start.getUTCFullYear();
+  const monthDiff = end.getUTCMonth() - start.getUTCMonth();
+  const dayDiff = end.getUTCDate() - start.getUTCDate();
 
   let totalMonths = yearDiff * 12 + monthDiff;
   if (dayDiff < 0) {
@@ -41,19 +48,18 @@ export function calculateDuration(
 }
 
 export function formatDuration(startDate: string, endDate?: string) {
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date();
-
-  const years = end.getFullYear() - start.getFullYear();
-  const months = end.getMonth() - start.getMonth();
+  const { years, months } = calculateDuration(
+    toLocalDate(startDate),
+    endDate ? toLocalDate(endDate) : null,
+  );
 
   if (years === 0) {
     return `${months} month${months !== 1 ? "s" : ""}`;
-  } else if (months === 0) {
-    return `${years} year${years !== 1 ? "s" : ""}`;
-  } else {
-    return `${years} year${years !== 1 ? "s" : ""} ${months} month${months !== 1 ? "s" : ""}`;
   }
+  if (months === 0) {
+    return `${years} year${years !== 1 ? "s" : ""}`;
+  }
+  return `${years} year${years !== 1 ? "s" : ""} ${months} month${months !== 1 ? "s" : ""}`;
 }
 
 export function truncateText(text: string, maxLength: number) {

@@ -4,6 +4,7 @@ import {
   calculateDuration,
   truncateText,
   generateId,
+  formatDuration,
 } from "../utils";
 
 describe("Utility Functions", () => {
@@ -37,6 +38,10 @@ describe("Utility Functions", () => {
       const date = new Date("2023-12-01");
       expect(formatDate(date)).toBe("December 2023");
     });
+
+    it("parses non-ISO string dates via fallback", () => {
+      expect(formatDate("2023/12/01")).toBe("December 2023");
+    });
   });
 
   describe("calculateDuration", () => {
@@ -66,6 +71,29 @@ describe("Utility Functions", () => {
       expect(duration.years).toBeGreaterThanOrEqual(0);
       expect(duration.months).toBeGreaterThanOrEqual(0);
     });
+
+    it("returns 0 duration when end is before start", () => {
+      const startDate = new Date("2023-06-01");
+      const endDate = new Date("2023-05-01");
+      const duration = calculateDuration(startDate, endDate);
+      expect(duration).toEqual({ years: 0, months: 0 });
+    });
+
+    it("adjusts months down when end day is before start day", () => {
+      const startDate = new Date("2023-01-31");
+      const endDate = new Date("2023-03-01");
+      const duration = calculateDuration(startDate, endDate);
+      expect(duration).toEqual({ years: 0, months: 1 });
+    });
+
+    it("accepts string inputs and parses correctly", () => {
+      // Hit branches where params are not Date instances
+      const duration = calculateDuration(
+        "2023-01-01" as unknown as Date,
+        "2023-02-01" as unknown as Date,
+      );
+      expect(duration).toEqual({ years: 0, months: 1 });
+    });
   });
 
   describe("truncateText", () => {
@@ -86,6 +114,32 @@ describe("Utility Functions", () => {
 
     it("handles empty string", () => {
       expect(truncateText("", 10)).toBe("");
+    });
+  });
+
+  describe("formatDuration", () => {
+    it("formats months only when within same year", () => {
+      expect(formatDuration("2023-01-01", "2023-03-01")).toBe("2 months");
+    });
+
+    it("formats years only when months are zero", () => {
+      expect(formatDuration("2023-01-01", "2024-01-01")).toBe("1 year");
+    });
+
+    it("formats years and months when both non-zero", () => {
+      expect(formatDuration("2023-01-01", "2024-03-01")).toBe(
+        "1 year 2 months",
+      );
+    });
+
+    it("formats singular month correctly", () => {
+      expect(formatDuration("2023-01-01", "2023-02-01")).toBe("1 month");
+    });
+
+    it("formats singular year with singular month correctly", () => {
+      expect(formatDuration("2023-01-01", "2024-02-01")).toBe(
+        "1 year 1 month",
+      );
     });
   });
 

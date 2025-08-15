@@ -38,6 +38,10 @@ jest.mock("framer-motion", () => ({
     h1: ({ children, ...props }) => <h1 {...props}>{children}</h1>,
     p: ({ children, ...props }) => <p {...props}>{children}</p>,
     a: ({ children, ...props }) => <a {...props}>{children}</a>,
+    header: ({ children, ...props }) => <header {...props}>{children}</header>,
+    nav: ({ children, ...props }) => <nav {...props}>{children}</nav>,
+    button: ({ children, ...props }) => <button {...props}>{children}</button>,
+    svg: ({ children, ...props }) => <svg {...props}>{children}</svg>,
   },
   AnimatePresence: ({ children }) => children,
 }));
