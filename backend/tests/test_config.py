@@ -105,7 +105,8 @@ class TestSettings:
 
     def test_required_fields(self):
         """Test that required fields raise validation errors when missing."""
-        with patch.dict(os.environ, {}, clear=True):
+        # In production, critical settings must be provided
+        with patch.dict(os.environ, {"ENVIRONMENT": "production"}, clear=True):
             with pytest.raises(ValueError):
                 Settings()
 

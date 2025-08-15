@@ -5,7 +5,7 @@ Application configuration settings using Pydantic Settings.
 import json
 from typing import Any
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings
 
 
@@ -82,6 +82,21 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+
+    @model_validator(mode="after")
+    def _validate_required_in_production(self) -> "Settings":
+        """Enforce required fields in production environment."""
+        if self.ENVIRONMENT == "production":
+            missing: list[str] = []
+            if not self.SECRET_KEY:
+                missing.append("SECRET_KEY")
+            if not self.DATABASE_URL:
+                missing.append("DATABASE_URL")
+            if missing:
+                raise ValueError(
+                    f"Missing required settings in production: {', '.join(missing)}"
+                )
+        return self
 
 
 # Create settings instance
