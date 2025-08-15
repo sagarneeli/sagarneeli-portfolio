@@ -1,7 +1,4 @@
-"""
-AI-related endpoints for the portfolio.
-"""
-
+"""AI-related endpoints for the portfolio."""
 
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse
