@@ -41,8 +41,9 @@ jest.mock("@/components/layout/footer", () => ({
 }));
 
 describe("Page", () => {
-  it("renders all main sections", () => {
-    render(<Page />);
+  it("renders all main sections", async () => {
+    const ui = await Page();
+    render(ui);
 
     // Check that all sections are rendered
     expect(screen.getByTestId("header")).toBeInTheDocument();
@@ -55,8 +56,9 @@ describe("Page", () => {
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 
-  it("renders sections in correct order", () => {
-    render(<Page />);
+  it("renders sections in correct order", async () => {
+    const ui = await Page();
+    render(ui);
 
     const sections = [
       "header",
@@ -83,8 +85,9 @@ describe("Page", () => {
     }
   });
 
-  it("has proper main element structure", () => {
-    render(<Page />);
+  it("has proper main element structure", async () => {
+    const ui = await Page();
+    render(ui);
 
     const main = screen.getByRole("main");
     expect(main).toBeInTheDocument();

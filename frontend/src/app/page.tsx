@@ -21,7 +21,7 @@ export default async function HomePage() {
       getSkills(),
       getProfile(),
     ]);
-  } catch (_) {
+  } catch {
     // Ignore API failures; components will render static content
   }
 
