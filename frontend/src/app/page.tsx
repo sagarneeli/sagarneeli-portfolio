@@ -4,7 +4,7 @@ import { ExperienceSection } from "@/components/sections/experience-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { ContactSection } from "@/components/sections/contact-section";
-import { getExperiences, getProjects, getSkills, getProfile } from "@/lib/api";
+import { getExperiences, getProjects, getSkills, getProfile } from "../lib/api";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 

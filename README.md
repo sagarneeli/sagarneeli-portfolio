@@ -75,6 +75,9 @@ docker-compose exec backend python scripts/init_db.py
 ```bash
 # Frontend
 cd frontend
+npm ci
+# If running backend on a different origin (http://localhost:8000), set API base URL
+echo "NEXT_PUBLIC_API_BASE_URL=http://localhost:8000" > .env.local
 npm install
 npm run dev
 
@@ -89,6 +92,60 @@ export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/portfolio"
 export SECRET_KEY="your-secret-key"
 python scripts/init_db.py
 uvicorn app.main:app --reload
+```
+
+### Local URLs
+- Frontend: http://localhost:3000
+- Backend API root: http://localhost:8000
+- API docs (dev only): http://localhost:8000/docs
+
+## ⚙️ Environment Variables
+
+### Frontend
+- `NEXT_PUBLIC_API_BASE_URL`: Base URL for API requests from the frontend. Leave empty to use same-origin; set to `http://localhost:8000` when running backend separately.
+
+### Backend
+- `ENVIRONMENT` (default `development`): `development` | `test` | `production`.
+- `DEBUG` (default `True`): Enables autoreload and debug logging.
+- `DATABASE_URL` (optional in dev/test): If unset, backend uses in-memory SQLite with sample data.
+- `REDIS_URL` (default `redis://localhost:6379`): Redis connection URL.
+- `SECRET_KEY`: Required in production; optional in dev/test.
+- `ALLOWED_ORIGINS` (default `["http://localhost:3000"]`): CORS origins; accepts JSON array or comma-separated string.
+- `OPENAI_API_KEY`, `HUGGINGFACE_API_KEY`, `QDRANT_URL`: Enable AI features if provided.
+- `ENABLE_AI_FEATURES` (default `True`), `ENABLE_ANALYTICS` (default `False`), `ENABLE_BLOG` (default `True`).
+
+## 🧰 Common Tasks
+
+### Frontend
+```bash
+cd frontend
+
+# Lint & format
+npm run lint
+npm run format:check
+
+# Type-check
+npm run type-check
+
+# Unit tests
+npm run test:ci
+
+# E2E tests (install browsers first)
+npx playwright install
+npm run test:e2e
+```
+
+### Backend
+```bash
+cd backend
+
+# Lint & type-check
+ruff check .
+ruff format --check .
+mypy app/
+
+# Tests with coverage
+pytest -v --cov=app --cov-report=term-missing --cov-report=html
 ```
 
 ## 🗄️ Database Setup
@@ -237,6 +294,22 @@ backend/
 │   └── test_config.py          # Configuration tests
 ├── pytest.ini                 # Pytest configuration
 └── requirements.txt           # Includes testing dependencies
+```
+
+## 📁 Repository Structure
+```
+.
+├── frontend/                 # Next.js 15 (App Router) + TypeScript
+│   ├── src/                  # App, components, lib
+│   ├── e2e/                  # Playwright tests
+│   ├── jest.config.js        # Jest config
+│   └── playwright.config.ts  # Playwright config
+├── backend/                  # FastAPI + SQLAlchemy + Alembic
+│   ├── app/                  # Application code
+│   ├── scripts/              # DB init and utilities
+│   └── tests/                # Pytest suite
+├── docker-compose.yml        # Local multi-service dev
+└── .github/workflows/ci.yml  # CI pipeline
 ```
 
 ## 🔧 Development
