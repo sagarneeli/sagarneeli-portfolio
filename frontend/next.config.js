@@ -44,11 +44,12 @@ const nextConfig = {
   async rewrites() {
     // Proxy API during local development if BACKEND_BASE is provided, else
     // default to localhost:8000. No rewrites in production.
-    if (process.env.NODE_ENV !== 'development') return [];
-    const target = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    if (process.env.NODE_ENV !== "development") return [];
+    const target =
+      process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
     return [
       {
-        source: '/api/v1/:path*',
+        source: "/api/v1/:path*",
         destination: `${target}/api/v1/:path*`,
       },
     ];

@@ -71,7 +71,9 @@ export function ContactSection({
                   <h4 className="font-semibold text-slate-900 dark:text-white">
                     Email
                   </h4>
-                  <p className="text-slate-600 dark:text-slate-300">{emailAddr}</p>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    {emailAddr}
+                  </p>
                 </div>
               </motion.a>
 
@@ -91,7 +93,9 @@ export function ContactSection({
                   <h4 className="font-semibold text-slate-900 dark:text-white">
                     LinkedIn
                   </h4>
-                  <p className="text-slate-600 dark:text-slate-300">linkedin.com/in/sagarneeli</p>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    linkedin.com/in/sagarneeli
+                  </p>
                 </div>
               </motion.a>
 
@@ -111,7 +115,9 @@ export function ContactSection({
                   <h4 className="font-semibold text-slate-900 dark:text-white">
                     GitHub
                   </h4>
-                  <p className="text-slate-600 dark:text-slate-300">github.com/sagarneeli</p>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    github.com/sagarneeli
+                  </p>
                 </div>
               </motion.a>
             </div>

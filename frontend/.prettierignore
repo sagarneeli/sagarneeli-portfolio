@@ -1,0 +1,20 @@
+# Build outputs
+.next
+.swc
+
+# Test outputs
+coverage
+playwright-report
+test-results
+
+# Dependencies
+node_modules
+
+# Logs and lockfiles
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Misc
+*.tsbuildinfo
+.DS_Store

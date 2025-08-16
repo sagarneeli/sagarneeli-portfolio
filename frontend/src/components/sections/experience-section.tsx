@@ -81,7 +81,8 @@ export function ExperienceSection({
 }: {
   experiences?: ExperienceItem[];
 }) {
-  const data = experiences && experiences.length > 0 ? experiences : experiencesFallback;
+  const data =
+    experiences && experiences.length > 0 ? experiences : experiencesFallback;
   return (
     <section id="experience" className="py-20 bg-slate-50 dark:bg-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,7 +138,7 @@ export function ExperienceSection({
                       <div className="text-right">
                         <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
                           <Calendar className="w-4 h-4 mr-1" />
-                        {experience.duration}
+                          {experience.duration}
                         </div>
                       </div>
                     </div>

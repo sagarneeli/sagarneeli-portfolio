@@ -60,11 +60,14 @@ export function AboutSection({ summary }: { summary?: string }) {
             {summary || (
               <>
                 I'm a Senior Backend & AI Engineer with a passion for building
-                intelligent, scalable systems that solve real-world problems. With
-                nearly a decade of experience, I've evolved from a traditional
-                backend engineer to a specialist in AI-powered solutions and
-                distributed architectures. My brand is expressed through a
-                minimalist <span className="font-semibold text-slate-900 dark:text-white">SN</span>{" "}
+                intelligent, scalable systems that solve real-world problems.
+                With nearly a decade of experience, I've evolved from a
+                traditional backend engineer to a specialist in AI-powered
+                solutions and distributed architectures. My brand is expressed
+                through a minimalist{" "}
+                <span className="font-semibold text-slate-900 dark:text-white">
+                  SN
+                </span>{" "}
                 monogram—clean, future-focused, and unmistakably mine.
               </>
             )}

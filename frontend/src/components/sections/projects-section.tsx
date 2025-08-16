@@ -1,9 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Zap, Brain, Database } from "lucide-react";
-
-type IconType = (props: { className?: string }) => JSX.Element;
+import {
+  ExternalLink,
+  Github,
+  Zap,
+  Brain,
+  Database,
+  type LucideIcon,
+} from "lucide-react";
 
 type ProjectItem = {
   title: string;
@@ -12,7 +17,7 @@ type ProjectItem = {
   technologies: string[];
   impact: string;
   type: string;
-  icon?: IconType;
+  icon?: LucideIcon;
 };
 
 const projectsFallback: ProjectItem[] = [
@@ -99,7 +104,7 @@ export function ProjectsSection({ projects }: { projects?: ProjectItem[] }) {
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                     {(() => {
-                      const IconComp = (project.icon || (Database as unknown as IconType)) as IconType;
+                      const IconComp = (project.icon ?? Database) as LucideIcon;
                       return <IconComp className="w-6 h-6" />;
                     })()}
                   </div>

@@ -9,11 +9,9 @@ describe("Header", () => {
     expect(screen.getByText(/Sagar Neeli/)).toBeInTheDocument();
 
     // Navigation items are links
-    ["About", "Experience", "Projects", "Skills", "Contact"].forEach(
-      (name) => {
-        expect(screen.getByRole("link", { name })).toBeInTheDocument();
-      },
-    );
+    ["About", "Experience", "Projects", "Skills", "Contact"].forEach((name) => {
+      expect(screen.getByRole("link", { name })).toBeInTheDocument();
+    });
 
     // Resume button (desktop action)
     expect(screen.getByRole("button", { name: /resume/i })).toBeInTheDocument();

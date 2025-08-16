@@ -15,12 +15,13 @@ export default async function HomePage() {
   let skillsData: Awaited<ReturnType<typeof getSkills>> | null = null;
   let profileData: Awaited<ReturnType<typeof getProfile>> | null = null;
   try {
-    [experiencesData, projectsData, skillsData, profileData] = await Promise.all([
-      getExperiences(),
-      getProjects(),
-      getSkills(),
-      getProfile(),
-    ]);
+    [experiencesData, projectsData, skillsData, profileData] =
+      await Promise.all([
+        getExperiences(),
+        getProjects(),
+        getSkills(),
+        getProfile(),
+      ]);
   } catch {
     // Ignore API failures; components will render static content
   }
