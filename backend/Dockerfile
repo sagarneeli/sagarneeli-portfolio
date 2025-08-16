@@ -11,6 +11,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
+    libpq-dev \
+    postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Create and activate virtual environment
@@ -35,6 +37,7 @@ RUN groupadd -r appuser && useradd -r -g appuser appuser
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y \
     curl \
+    libpq5 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy virtual environment from builder stage
